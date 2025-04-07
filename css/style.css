@@ -672,6 +672,25 @@ h3.my-profession {
     display: block;
 }
 
+/* Form Output */
+.form-output {
+  color: var(--text-black-700);
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: var(--bg-black-50);
+  border-radius: 10px;
+}
+.form-output h4 {
+  color: var(--skin-color);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.form-output p {
+  margin-bottom: 5px;
+}
+
 /* contact */
 .contact-title {
     color: var(--skin-color);

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pushkar Kumar Saini</title>
+  <title>Anurag Kumar</title>
   <meta name="description"
     content="This is the personal website of Pushkar Kumar Saini, showcasing his work, projects, and portfolio. Explore to learn more about his skills and achievements.">
   <!-- ===== CSS Files ===== -->
@@ -82,7 +82,7 @@
         <div class="container">
           <div class="row">
             <div class="home-info padd-15">
-              <h3 class="hello">Hey there! My name is <span class="name">Pushkar Kumar Saini</span></h3>
+              <h3 class="hello">Hey there! My name is <span class="name">Anurag Kumar</span></h3>
               <h3 class="my-profession">I'm a <span class="typing"></span></h3>
               <p>
                 As a skilled MERN stack web developer with more than a year of hands-on experience, I specialize in
@@ -95,7 +95,7 @@
                 target="blank" class="btn">Download Resume</a>
             </div>
             <div class="home-img padd-15">
-              <img src="images/Self.jpg" alt="Pushkar Kumar Saini">
+              <img src="  " alt="Anurag Kumar">
             </div>
           </div>
         </div>
@@ -478,6 +478,7 @@
           <!-- ====== Contact Form ====== -->
           <div class="row">
             <div class="contact-form padd-15">
+              <div id="form-output" class="form-output" style="display: none; margin-bottom: 20px; padding: 15px; background: var(--bg-black-50); border-radius: 10px;"></div>
               <form id="contact-form">
                 <div class="row">
                   <div class="form-item col-6 padd-15">
@@ -550,7 +551,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script type="text/javascript">
     (function () {
-      emailjs.init("GYQ6VHEu_6LIkKgs_");
+      emailjs.init("1tR7L7pCbBDW9pbv4");
     })();
   </script>
   <script type="text/javascript">
@@ -573,16 +574,19 @@
           alert('Please enter a valid email address.');
           return; // Stop execution if email is invalid
         }
-        // Prepare email parameters
+        // Prepare email parameters with sender's email as from address
         var templateParams = {
-          from_name: name,
-          reply_to: email,
+          from_name: name + " (" + email + ")",
+          from_email: "pushkarkumarsaini2006@gmail.com",  // Your verified domain email
+          reply_to: email,  // Sender's email for replies
           to_name: "Pushkar Kumar Saini",
+          to_email: "pushkarkumarsaini2006@gmail.com",
           subject: subject,
-          message: message
+          message: message,
+          sender_email: email  // For reference in template
         };
         // Send email using EmailJS
-        emailjs.send('service_7y7igtl', 'template_hyqul7y', templateParams)
+        emailjs.send('service_efdlmwo', 'template_mdbv5xi', templateParams)
           .then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
             document.getElementById('submitButton').classList.add('submitted');
@@ -592,6 +596,21 @@
               document.getElementById('submitButton').classList.remove('submitted');
               document.getElementById('submitButton').textContent = 'Send';
             }, 750);
+        // Display form values
+            const outputDiv = document.getElementById('form-output');
+            if (outputDiv) {
+              outputDiv.innerHTML = `
+                <h4>Submitted Information:</h4>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Subject:</strong> ${subject}</p>
+                <p><strong>Message:</strong> ${message}</p>
+              `;
+              outputDiv.style.display = 'block';
+              // Scroll to show the output
+              outputDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            console.log(templateParams);
           })
           .catch(function (error) {
             console.log('FAILED...', error);
